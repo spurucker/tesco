@@ -31,4 +31,9 @@ public class UrlController {
         Url url = urlService.getUrl(shortUrl);
         return new ModelAndView("redirect:" + url.getValue());
     }
+
+    @GetMapping("/{shortUrl}/statistics")
+    public Url GetStatistics(@PathVariable("shortUrl") String shortUrl) throws NotFoundException {
+        return urlService.getUrl(shortUrl);
+    }
 }
