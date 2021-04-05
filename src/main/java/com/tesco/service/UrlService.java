@@ -33,6 +33,7 @@ public class UrlService {
         Long id = codecService.decode62(shortUrl);
         return urlDao.getUrlById(id)
             .map(this::addUrlAccess)
+            .map(u -> new Url(u, shortUrl))
             .orElseThrow(() -> new NotFoundException(String.format("Url %s was not found", shortUrl)));
     }
 
